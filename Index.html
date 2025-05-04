@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PostMagique - Générateur de posts</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background-color: #f9f9f9; }
+    h1 { color: #333; }
+    select, button { padding: 10px; font-size: 16px; margin: 10px 0; }
+    #resultat { margin-top: 20px; background: #fff; padding: 15px; border-radius: 5px; box-shadow: 0 0 10px #ccc; }
+  </style>
+</head>
+<body>
+
+  <h1>PostMagique</h1>
+  <p>Crée ton post Instagram ou LinkedIn en 1 clic !</p>
+
+  <label for="theme">Choisis un thème :</label>
+  <select id="theme">
+    <option value="motivation">Motivation</option>
+    <option value="business">Business</option>
+    <option value="mode">Mode</option>
+    <option value="nutrition">Nutrition</option>
+  </select>
+  <br>
+  <button onclick="genererPost()">Générer le post</button>
+
+  <div id="resultat"></div>
+
+  <script>
+    const posts = {
+      motivation: [
+        "N'abandonne jamais. Chaque jour est une nouvelle chance de réussir.",
+        "Le succès ne vient pas à toi, tu vas à lui.",
+        "Ta seule limite, c'est toi-même."
+      ],
+      business: [
+        "Le meilleur investissement, c'est celui que tu fais en toi-même.",
+        "Construis une marque, pas juste un produit.",
+        "N'attends pas l'opportunité, crée-la."
+      ],
+      mode: [
+        "La mode se démode, le style jamais. – Coco Chanel",
+        "Sois tendance, mais reste toi-même.",
+        "Chaque jour est une occasion de faire une déclaration."
+      ],
+      nutrition: [
+        "Ton corps est ton temple. Nourris-le bien.",
+        "Mange sain, vis mieux.",
+        "Ce que tu manges aujourd’hui construit ton corps de demain."
+      ]
+    };
+
+    function genererPost() {
+      const theme = document.getElementById('theme').value;
+      const contenu = posts[theme];
+      const post = contenu[Math.floor(Math.random() * contenu.length)];
+      document.getElementById('resultat').innerHTML = `<strong>Ton post :</strong><br>${post}`;
+    }
+  </script>
+
+</body>
+</html>
